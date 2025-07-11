@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome！丨ByteFlowing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #4CAF50;
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        /* 移动端菜单按钮 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+        
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(rgba(67, 97, 238, 0.9), rgba(63, 55, 201, 0.9)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 201, 240, 0.4);
+            background: #3ab4d9;
+        }
+        
+        /* 博客内容区域 */
+        .blog-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            display: inline-block;
+            background: white;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #ddd;
+            z-index: 1;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content h3 {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .card-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-top: auto;
+        }
+        
+        /* 关于区域 */
+        .about-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
+        }
+        
+        .skills {
+            margin-top: 30px;
+        }
+        
+        .skill-bar {
+            margin-bottom: 15px;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+        
+        .skill-progress {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+        
+        /* 联系区域 */
+        .contact-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 5px;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+        }
+        
+        .contact-details p {
+            color: var(--gray);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #343a40;
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #343a40;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        /* 缩放适配优化 */
+        @media screen and (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* 响应式设计 */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 100px 20px;
+                transition: var(--transition);
+                z-index: 5;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .blog-section, .about-section, .contact-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .contact-container {
+                gap: 20px;
+            }
+            
+            .footer-content {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>CodeFreshman</span>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#blog">博客</a></li>
+                    <li><a href="https://github.com/ByteFlowing1337">项目</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>从编程新手到开发者的旅程</h1>
+                <p>记录一个大一计算机专业学生的编程学习、项目实践与技术成长</p>
+                <p>网站开发中... </p>
+                <p><del style="color: gray;">Supported by Deepseek</del></p>
+                <a href="https://space.bilibili.com/1998380222" class="btn">查看我的Bilibili主页</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 博客区域 -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>最新文章</h2>
+            </div>
+            <div class="blog-grid">
+                <!-- 博客卡片 1 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="HTML & CSS">
+                    </div>
+                    <div class="card-content">
+                        <h3>HTML & CSS 入门指南</h3>
+                        <p>未完待续...</p>
+                        <a href="blog-html-css.html" class="btn">阅读全文</a>
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> 2025-07-11 12:54:53</span>
+                            <span><i class="far fa-comment"></i> 0 评论</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 博客卡片 2 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="JavaScript">
+                    </div>
+                    <div class="card-content">
+                        <h3>JavaScript 学习曲线</h3>
+                        <p>未完待续...</p>
+                        <a href="blog-javascript.html" class="btn">阅读全文</a>
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> 2025-07-11 12:55:14</span>
+                            <span><i class="far fa-comment"></i> 0 评论</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 博客卡片 3 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://www.wanhebin.com/wp-content/uploads/2020/07/git-logo.png" alt="Git">
+                    </div>
+                    <div class="card-content">
+                        <h3>Git 版本控制入门</h3>
+                        <p>未完待续...</p>
+                        <a href="blog-git.html" class="btn">阅读全文</a>
+                        <div class="meta">
+                            <span><i class="far fa-calendar"></i> 2025-07-11 12:55:21</span>
+                            <span><i class="far fa-comment"></i> 0 评论</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于区域 -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于我</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>计算机专业大一学生</h2>
+                    <h2>爱玩LOL</h2>
+                    <h2>编程入门级^^</h2>
+                    
+                     <div class="skills">
+                        <h3>当前技能树</h3>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>HTML/CSS</span>
+                                <span>5%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>C++</span>
+                                <span>10%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>C</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Git</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="progress" style="width: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-buttons" style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="projects.html" class="btn" style="background: var(--secondary);">查看我的项目</a>
+                        <a href="resume.pdf" class="btn" style="background: var(--success);" download>下载简历</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系区域 -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>邮箱</h3>
+                            <p>fakeshadow1337@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>位置</h3>
+                            <p>People Republic of China</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-qq" aria-hidden="true"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>QQ</h3>
+                            <p>465669107</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>社交媒体</h3>
+                            <div class="social-links" style="margin-top: 10px;">
+                                <a href="https://github.com/ByteFlowing1337" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://space.bilibili.com/1998380222" target="_blank"><i class="fab fa-bilibili"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" class="form-control" placeholder="你的名字" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" class="form-control" placeholder="你的邮箱" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">留言</label>
+                            <textarea id="message" class="form-control" placeholder="你想对我说什么..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CodeFreshman</h3>
+                    <p>一个记录编程学习旅程的个人博客，分享从零开始学习编程的经验、资源和心得体会。</p>
+                    <div class="social-links">
+                        <a href="https://github.com/ByteFlowing1337" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://space.bilibili.com/1998380222" target="_blank"><i class="fab fa-bilibili"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#about">关于我</a></li>
+                        <li><a href="#blog">博客</a></li>
+                        <li><a href="#projects">项目作品</a></li>
+                        <li><a href="#notes">学习资源</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="category.html?cat=frontend">前端开发</a></li>
+                        <li><a href="category.html?cat=python">Python学习</a></li>
+                        <li><a href="category.html?cat=algorithm">算法与数据结构</a></li>
+                        <li><a href="category.html?cat=git">Git与GitHub</a></li>
+                        <li><a href="category.html?cat=campus">大学生活</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>订阅更新</h3>
+                    <p>订阅我的博客，获取最新的学习笔记和编程资源。</p>
+                    <form id="subscribeForm">
+                        <div class="form-group">
+                            <input type="email" id="subscribeEmail" class="form-control" placeholder="你的邮箱地址" required>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">订阅</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CodeNewbie - 编程新手的成长笔记. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // 点击菜单项关闭菜单（移动端）
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // 表单验证
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if(name && email && message) {
+                alert('消息已发送！感谢你的联系。');
+                this.reset();
+            } else {
+                alert('请填写所有字段！');
+            }
+        });
+        
+        // 订阅表单处理
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('subscribeEmail').value;
+            if(email) {
+                alert(`感谢订阅！我们会将更新发送到 ${email}`);
+                this.reset();
+            }
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 滚动效果
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
