@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <title>编程新手的成长笔记</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -30,6 +29,7 @@
             background-color: #f0f2f5;
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -94,6 +94,28 @@
             background: rgba(255, 255, 255, 0.25);
         }
         
+        /* 移动端菜单按钮 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+        
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
         /* 英雄区域 */
         .hero {
             padding: 80px 0;
@@ -110,13 +132,13 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 20px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             margin-bottom: 30px;
             opacity: 0.9;
         }
@@ -139,6 +161,7 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(76, 201, 240, 0.4);
+            background: #3ab4d9;
         }
         
         /* 博客内容区域 */
@@ -153,7 +176,7 @@
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             color: var(--primary);
             display: inline-block;
             background: white;
@@ -185,6 +208,9 @@
             overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .blog-card:hover {
@@ -195,6 +221,7 @@
         .card-img {
             height: 200px;
             overflow: hidden;
+            flex-shrink: 0;
         }
         
         .card-img img {
@@ -210,10 +237,13 @@
         
         .card-content {
             padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .card-content h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
             margin-bottom: 15px;
             color: var(--dark);
         }
@@ -221,6 +251,7 @@
         .card-content p {
             color: var(--gray);
             margin-bottom: 20px;
+            flex-grow: 1;
         }
         
         .meta {
@@ -230,6 +261,7 @@
             font-size: 0.9rem;
             border-top: 1px solid #eee;
             padding-top: 15px;
+            margin-top: auto;
         }
         
         /* 关于区域 */
@@ -249,14 +281,14 @@
         }
         
         .about-text h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             color: var(--primary);
             margin-bottom: 20px;
         }
         
         .about-text p {
             margin-bottom: 20px;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 1.5vw, 1.1rem);
         }
         
         .skills {
@@ -271,6 +303,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 5px;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
         
         .skill-progress {
@@ -332,14 +365,17 @@
             justify-content: center;
             color: white;
             font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
         .contact-details h3 {
             margin-bottom: 5px;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
         }
         
         .contact-details p {
             color: var(--gray);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
         
         .contact-form {
@@ -357,6 +393,7 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
         
         .form-control {
@@ -364,7 +401,7 @@
             padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             transition: var(--transition);
         }
         
@@ -394,7 +431,7 @@
         }
         
         .footer-column h3 {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
@@ -422,6 +459,7 @@
             color: #adb5bd;
             text-decoration: none;
             transition: var(--transition);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
         }
         
         .footer-links a:hover {
@@ -460,31 +498,76 @@
             font-size: 0.9rem;
         }
         
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .navbar {
+        /* 缩放适配优化 */
+        @media screen and (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .about-content {
                 flex-direction: column;
-                padding: 15px 0;
+            }
+            
+            .about-image {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* 响应式设计 */
+        @media screen and (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
             }
             
             .nav-links {
-                margin-top: 20px;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 100px 20px;
+                transition: var(--transition);
+                z-index: 5;
+            }
+            
+            .nav-links.active {
+                right: 0;
             }
             
             .nav-links li {
-                margin: 0 10px;
+                margin: 15px 0;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero {
+                padding: 60px 0;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .blog-section, .about-section, .contact-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .container {
+                padding: 0 15px;
             }
             
-            .about-content {
-                flex-direction: column;
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .contact-container {
+                gap: 20px;
+            }
+            
+            .footer-content {
+                gap: 30px;
             }
         }
     </style>
@@ -498,12 +581,18 @@
                     <i class="fas fa-laptop-code"></i>
                     <span>CodeNewbie</span>
                 </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul class="nav-links">
                     <li><a href="#" class="active">首页</a></li>
-                    <li><a href="#">博客</a></li>
-                    <li><a href="#">项目</a></li>
-                    <li><a href="#">学习笔记</a></li>
-                    <li><a href="#">关于我</a></li>
+                    <li><a href="#blog">博客</a></li>
+                    <li><a href="#projects">项目</a></li>
+                    <li><a href="#notes">学习笔记</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#contact">联系</a></li>
                 </ul>
             </nav>
         </div>
@@ -515,13 +604,13 @@
             <div class="hero-content">
                 <h1>从编程菜鸟到开发者的旅程</h1>
                 <p>记录一个大一计算机专业学生的编程学习、项目实践与技术成长</p>
-                <a href="#" class="btn">查看我的学习笔记</a>
+                <a href="#notes" class="btn">查看我的学习笔记</a>
             </div>
         </div>
     </section>
 
     <!-- 博客区域 -->
-    <section class="blog-section">
+    <section class="blog-section" id="blog">
         <div class="container">
             <div class="section-title">
                 <h2>最新文章</h2>
@@ -535,7 +624,7 @@
                     <div class="card-content">
                         <h3>HTML & CSS 入门指南</h3>
                         <p>分享我作为初学者学习HTML和CSS的经验，包括常见陷阱和实用资源...</p>
-                        <a href="#" class="btn">阅读全文</a>
+                        <a href="blog-html-css.html" class="btn">阅读全文</a>
                         <div class="meta">
                             <span><i class="far fa-calendar"></i> 2023-10-15</span>
                             <span><i class="far fa-comment"></i> 24 评论</span>
@@ -551,7 +640,7 @@
                     <div class="card-content">
                         <h3>JavaScript 学习曲线</h3>
                         <p>从变量声明到异步编程，记录我学习JavaScript的心路历程...</p>
-                        <a href="#" class="btn">阅读全文</a>
+                        <a href="blog-javascript.html" class="btn">阅读全文</a>
                         <div class="meta">
                             <span><i class="far fa-calendar"></i> 2023-10-08</span>
                             <span><i class="far fa-comment"></i> 18 评论</span>
@@ -567,7 +656,7 @@
                     <div class="card-content">
                         <h3>Git 版本控制入门</h3>
                         <p>从零开始学习Git：基本命令、工作流程和团队协作实践...</p>
-                        <a href="#" class="btn">阅读全文</a>
+                        <a href="blog-git.html" class="btn">阅读全文</a>
                         <div class="meta">
                             <span><i class="far fa-calendar"></i> 2023-10-01</span>
                             <span><i class="far fa-comment"></i> 32 评论</span>
@@ -579,7 +668,7 @@
     </section>
 
     <!-- 关于区域 -->
-    <section class="about-section">
+    <section class="about-section" id="about">
         <div class="container">
             <div class="section-title">
                 <h2>关于我</h2>
@@ -632,6 +721,11 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="project-buttons" style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="projects.html" class="btn" style="background: var(--secondary);">查看我的项目</a>
+                        <a href="resume.pdf" class="btn" style="background: var(--success);" download>下载简历</a>
+                    </div>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1534665482403-a909d0d97c67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="关于我">
@@ -641,7 +735,7 @@
     </section>
 
     <!-- 联系区域 -->
-    <section class="contact-section">
+    <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2>联系我</h2>
@@ -674,26 +768,30 @@
                         </div>
                         <div class="contact-details">
                             <h3>社交媒体</h3>
-                            <p>GitHub · 知乎 · B站</p>
+                            <div class="social-links" style="margin-top: 10px;">
+                                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                                <a href="https://zhihu.com" target="_blank"><i class="fab fa-zhihu"></i></a>
+                                <a href="https://bilibili.com" target="_blank"><i class="fab fa-bilibili"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <form>
+                    <form id="contactForm">
                         <div class="form-group">
                             <label for="name">姓名</label>
-                            <input type="text" id="name" class="form-control" placeholder="你的名字">
+                            <input type="text" id="name" class="form-control" placeholder="你的名字" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email">邮箱</label>
-                            <input type="email" id="email" class="form-control" placeholder="你的邮箱">
+                            <input type="email" id="email" class="form-control" placeholder="你的邮箱" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">留言</label>
-                            <textarea id="message" class="form-control" placeholder="你想对我说什么..."></textarea>
+                            <textarea id="message" class="form-control" placeholder="你想对我说什么..." required></textarea>
                         </div>
                         
                         <button type="submit" class="btn">发送消息</button>
@@ -711,10 +809,10 @@
                     <h3>CodeNewbie</h3>
                     <p>一个记录编程学习旅程的个人博客，分享从零开始学习编程的经验、资源和心得体会。</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -722,31 +820,33 @@
                     <h3>快速链接</h3>
                     <ul class="footer-links">
                         <li><a href="#">首页</a></li>
-                        <li><a href="#">关于我</a></li>
-                        <li><a href="#">博客</a></li>
-                        <li><a href="#">项目作品</a></li>
-                        <li><a href="#">学习资源</a></li>
+                        <li><a href="#about">关于我</a></li>
+                        <li><a href="#blog">博客</a></li>
+                        <li><a href="#projects">项目作品</a></li>
+                        <li><a href="#notes">学习资源</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>分类</h3>
                     <ul class="footer-links">
-                        <li><a href="#">前端开发</a></li>
-                        <li><a href="#">Python学习</a></li>
-                        <li><a href="#">算法与数据结构</a></li>
-                        <li><a href="#">Git与GitHub</a></li>
-                        <li><a href="#">大学生活</a></li>
+                        <li><a href="category.html?cat=frontend">前端开发</a></li>
+                        <li><a href="category.html?cat=python">Python学习</a></li>
+                        <li><a href="category.html?cat=algorithm">算法与数据结构</a></li>
+                        <li><a href="category.html?cat=git">Git与GitHub</a></li>
+                        <li><a href="category.html?cat=campus">大学生活</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>订阅更新</h3>
                     <p>订阅我的博客，获取最新的学习笔记和编程资源。</p>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="你的邮箱地址">
-                        <button class="btn" style="width: 100%; margin-top: 10px;">订阅</button>
-                    </div>
+                    <form id="subscribeForm">
+                        <div class="form-group">
+                            <input type="email" id="subscribeEmail" class="form-control" placeholder="你的邮箱地址" required>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">订阅</button>
+                    </form>
                 </div>
             </div>
             
@@ -757,8 +857,25 @@
     </footer>
 
     <script>
-        // 简单的表单验证
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // 移动端菜单切换
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // 点击菜单项关闭菜单（移动端）
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // 表单验证
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             const name = document.getElementById('name').value;
@@ -771,6 +888,34 @@
             } else {
                 alert('请填写所有字段！');
             }
+        });
+        
+        // 订阅表单处理
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('subscribeEmail').value;
+            if(email) {
+                alert(`感谢订阅！我们会将更新发送到 ${email}`);
+                this.reset();
+            }
+        });
+        
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
         
         // 滚动效果
