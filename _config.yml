@@ -1,2 +1,3 @@
-<style> * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
 title: Byteflowing's homepage
+theme: jekyll-theme-minimal
