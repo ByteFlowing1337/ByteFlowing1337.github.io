@@ -1,12 +1,10 @@
-# Welcome!
-# 大一在读，编程菜鸟
-# A first-year undergraduate student and a CS freshman :D
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>编程新手的成长笔记</title>
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
