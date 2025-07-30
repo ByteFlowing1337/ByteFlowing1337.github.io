@@ -5,165 +5,166 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ByteFlowing's homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4cc9f0;
+            --primary: #6a82fb;
+            --secondary: #fc5c7d;
+            --accent: #43e97b;
             --light: #f8f9fa;
             --dark: #212529;
             --gray: #6c757d;
             --success: #4CAF50;
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
+            --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            --glass-bg: rgba(255,255,255,0.35);
+            --glass-blur: blur(8px);
+            --transition: all 0.3s cubic-bezier(.4,2,.6,1);
         }
         
         body {
-            background-color: #f0f2f5;
+            background: linear-gradient(135deg, #f8ffae 0%, #43e97b 100%);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+            min-height: 100vh;
         }
         
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 32px;
         }
         
         /* 导航栏样式 */
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            border-bottom-left-radius: 18px;
+            border-bottom-right-radius: 18px;
         }
-        
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 28px 0 22px 0;
         }
-        
         .logo {
-            font-size: 1.8rem;
+            font-size: 2.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
+            letter-spacing: 2px;
         }
-        
         .logo i {
-            margin-right: 10px;
+            margin-right: 12px;
             color: var(--accent);
+            font-size: 2.2rem;
         }
-        
         .nav-links {
             display: flex;
             list-style: none;
+            gap: 8px;
         }
-        
         .nav-links li {
-            margin-left: 30px;
+            margin-left: 32px;
         }
-        
         .nav-links a {
             color: white;
             text-decoration: none;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 4px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 1.08rem;
+            letter-spacing: 1px;
             transition: var(--transition);
         }
-        
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.15);
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(255,255,255,0.18);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(67, 233, 123, 0.12);
         }
-        
-        .nav-links a.active {
-            background: rgba(255, 255, 255, 0.25);
-        }
-        
-        /* 移动端菜单按钮 */
         .menu-toggle {
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 30px;
-            height: 25px;
+            width: 32px;
+            height: 28px;
             background: transparent;
             border: none;
             cursor: pointer;
             padding: 0;
             z-index: 10;
         }
-        
         .menu-toggle span {
             width: 100%;
-            height: 3px;
+            height: 4px;
             background-color: white;
             border-radius: 3px;
             transition: var(--transition);
         }
-        
         /* 英雄区域 */
         .hero {
-            padding: 80px 0;
-            background: linear-gradient(rgba(67, 97, 238, 0.9), rgba(63, 55, 201, 0.9)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            padding: 100px 0 80px 0;
+            background: linear-gradient(120deg, rgba(106,130,251,0.85), rgba(252,92,125,0.85)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
+            border-radius: 0 0 32px 32px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
         }
-        
         .hero-content {
             max-width: 700px;
             margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border-radius: 24px;
+            padding: 48px 32px 40px 32px;
+            box-shadow: 0 4px 24px rgba(67, 233, 123, 0.08);
         }
-        
         .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 20px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.12);
         }
-        
         .hero p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 32px;
+            opacity: 0.93;
         }
-        
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background: var(--accent);
+            padding: 14px 36px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             color: white;
             border: none;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.15rem;
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(76, 201, 240, 0.3);
+            box-shadow: 0 4px 18px rgba(67, 233, 123, 0.18);
         }
-        
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(76, 201, 240, 0.4);
-            background: #3ab4d9;
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(252, 92, 125, 0.18);
+            background: linear-gradient(90deg, var(--accent), var(--primary));
         }
-        
         /* 博客内容区域 */
         .blog-section {
             padding: 80px 0;
@@ -266,263 +267,239 @@
         
         /* 关于区域 */
         .about-section {
-            padding: 80px 0;
-            background: white;
+            padding: 90px 0 80px 0;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: var(--glass-blur);
         }
-        
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 60px;
         }
-        
         .about-text {
             flex: 1;
         }
-        
         .about-text h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(2rem, 4vw, 2.7rem);
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            font-weight: 700;
         }
-        
         .about-text p {
-            margin-bottom: 20px;
-            font-size: clamp(1rem, 1.5vw, 1.1rem);
+            margin-bottom: 22px;
+            font-size: clamp(1.05rem, 1.5vw, 1.18rem);
         }
-        
         .skills {
-            margin-top: 30px;
+            margin-top: 36px;
         }
-        
         .skill-bar {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
-        
         .skill-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 5px;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            margin-bottom: 6px;
+            font-size: clamp(1rem, 1.5vw, 1.08rem);
+            font-weight: 600;
         }
-        
         .skill-progress {
-            height: 8px;
+            height: 10px;
             background: #e9ecef;
-            border-radius: 4px;
+            border-radius: 5px;
             overflow: hidden;
         }
-        
         .progress {
             height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 5px;
         }
-        
         .about-image {
             flex: 1;
-            border-radius: 12px;
+            border-radius: 18px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
         }
-        
         .about-image img {
             width: 100%;
             display: block;
         }
-        
+        .project-buttons {
+            margin-top: 36px;
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
         /* 联系区域 */
         .contact-section {
-            padding: 80px 0;
-            background: #f8f9fa;
+            padding: 90px 0 80px 0;
+            background: linear-gradient(120deg, #f8ffae 0%, #43e97b 100%);
         }
-        
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 48px;
         }
-        
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 32px;
         }
-        
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 18px;
         }
-        
         .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(67, 233, 123, 0.12);
         }
-        
         .contact-details h3 {
-            margin-bottom: 5px;
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            margin-bottom: 6px;
+            font-size: clamp(1.15rem, 2vw, 1.35rem);
+            font-weight: 600;
         }
-        
         .contact-details p {
             color: var(--gray);
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-size: clamp(1rem, 1.5vw, 1.08rem);
         }
-        
         .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            padding: 38px 32px;
+            border-radius: 18px;
             box-shadow: var(--card-shadow);
         }
-        
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
-        
         .form-group label {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: clamp(1rem, 1.5vw, 1.08rem);
         }
-        
         .form-control {
             width: 100%;
-            padding: 12px 15px;
+            padding: 14px 18px;
             border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            border-radius: 10px;
+            font-size: clamp(1rem, 1.5vw, 1.08rem);
             transition: var(--transition);
+            background: rgba(255,255,255,0.7);
         }
-        
         .form-control:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 0 0 3px rgba(106,130,251,0.13);
         }
-        
         textarea.form-control {
             min-height: 150px;
             resize: vertical;
         }
-        
         /* 页脚 */
         footer {
-            background: var(--dark);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
-            padding: 50px 0 20px;
+            padding: 60px 0 24px;
+            border-top-left-radius: 18px;
+            border-top-right-radius: 18px;
         }
-        
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
         }
-        
         .footer-column h3 {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            margin-bottom: 20px;
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            margin-bottom: 22px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
+            font-weight: 700;
         }
-        
         .footer-column h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
+            width: 54px;
             height: 2px;
             background: var(--accent);
         }
-        
         .footer-links {
             list-style: none;
         }
-        
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
-        
         .footer-links a {
-            color: #adb5bd;
+            color: #e0e0e0;
             text-decoration: none;
             transition: var(--transition);
-            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-size: clamp(1rem, 1.5vw, 1.08rem);
         }
-        
         .footer-links a:hover {
             color: var(--accent);
-            padding-left: 5px;
+            padding-left: 7px;
         }
-        
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 18px;
+            margin-top: 24px;
         }
-        
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             background: #343a40;
             color: white;
             border-radius: 50%;
             transition: var(--transition);
+            font-size: 1.3rem;
         }
-        
         .social-links a:hover {
             background: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-4px) scale(1.08);
         }
-        
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 24px;
             border-top: 1px solid #343a40;
-            color: #6c757d;
-            font-size: 0.9rem;
+            color: #e0e0e0;
+            font-size: 1rem;
         }
-        
         /* 缩放适配优化 */
         @media screen and (max-width: 1200px) {
             .container {
-                padding: 0 30px;
+                padding: 0 24px;
             }
         }
-        
         @media screen and (max-width: 992px) {
             .about-content {
                 flex-direction: column;
             }
-            
             .about-image {
                 order: -1;
                 max-width: 500px;
                 margin: 0 auto;
             }
         }
-        
         /* 响应式设计 */
         @media screen and (max-width: 768px) {
             .menu-toggle {
                 display: flex;
             }
-            
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -531,43 +508,35 @@
                 width: 70%;
                 background: var(--secondary);
                 flex-direction: column;
-                padding: 100px 20px;
+                padding: 120px 24px;
                 transition: var(--transition);
                 z-index: 5;
             }
-            
             .nav-links.active {
                 right: 0;
             }
-            
             .nav-links li {
-                margin: 15px 0;
+                margin: 18px 0;
             }
-            
             .hero {
-                padding: 60px 0;
+                padding: 70px 0 60px 0;
             }
-            
-            .blog-section, .about-section, .contact-section {
-                padding: 60px 0;
+            .about-section, .contact-section {
+                padding: 70px 0 60px 0;
             }
         }
-        
         @media screen and (max-width: 576px) {
             .container {
-                padding: 0 15px;
+                padding: 0 10px;
             }
-            
             .hero {
-                padding: 50px 0;
+                padding: 50px 0 40px 0;
             }
-            
             .contact-container {
-                gap: 20px;
+                gap: 18px;
             }
-            
             .footer-content {
-                gap: 30px;
+                gap: 18px;
             }
         }
     </style>
@@ -609,64 +578,6 @@
         </div>
     </section>
 
-    <!-- 博客区域 -->
-    <section class="blog-section" id="blog">
-        <div class="container">
-            <div class="section-title">
-                <h2>最新文章</h2>
-            </div>
-            <div class="blog-grid">
-                <!-- 博客卡片 1 -->
-                <div class="blog-card">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="HTML & CSS">
-                    </div>
-                    <div class="card-content">
-                        <h3>HTML & CSS 入门指南</h3>
-                        <p>未完待续...</p>
-                        <a href="blog-html-css.html" class="btn">阅读全文</a>
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> 2025-07-11 12:54:53</span>
-                            <span><i class="far fa-comment"></i> 0 评论</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 博客卡片 2 -->
-                <div class="blog-card">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="JavaScript">
-                    </div>
-                    <div class="card-content">
-                        <h3>JavaScript 学习曲线</h3>
-                        <p>未完待续...</p>
-                        <a href="blog-javascript.html" class="btn">阅读全文</a>
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> 2025-07-11 12:55:14</span>
-                            <span><i class="far fa-comment"></i> 0 评论</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 博客卡片 3 -->
-                <div class="blog-card">
-                    <div class="card-img">
-                        <img src="https://www.wanhebin.com/wp-content/uploads/2020/07/git-logo.png" alt="Git">
-                    </div>
-                    <div class="card-content">
-                        <h3>Git 版本控制入门</h3>
-                        <p>未完待续...</p>
-                        <a href="blog-git.html" class="btn">阅读全文</a>
-                        <div class="meta">
-                            <span><i class="far fa-calendar"></i> 2025-07-11 12:55:21</span>
-                            <span><i class="far fa-comment"></i> 0 评论</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- 关于区域 -->
     <section class="about-section" id="about">
         <div class="container">
@@ -675,8 +586,8 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h2>计算机专业学生</h2>
-                    <h2>爱玩LOL</h2>
+                    <h2>计算机专业在读</h2>
+                    <h2>爱玩LOL和mc</h2>
                     <h2>编程入门级^^</h2>
                     
                      <div class="skills">
@@ -843,7 +754,7 @@
                 
                 <div class="footer-column">
                     <h3>订阅更新</h3>
-                    <p>订阅我的博客，获取最新的学习笔记和编程资源。</p>
+                    <p>订阅我的博客，获取最新的更新消息。</p>
                     <form id="subscribeForm">
                         <div class="form-group">
                             <input type="email" id="subscribeEmail" class="form-control" placeholder="你的邮箱地址" required>
@@ -1079,5 +990,10 @@ document.addEventListener('DOMContentLoaded', () => {
   new PageViewCounter();
 });
     </script>
+    <div style="text-align:center; color:#888; font-size:0.95em; margin-top:18px;">
+      访客数：<span id="busuanzi_value_site_uv"></span>
+      | 总访问量：<span id="busuanzi_value_site_pv"></span>
+    </div>
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
