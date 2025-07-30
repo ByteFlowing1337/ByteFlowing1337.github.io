@@ -977,8 +977,7 @@ class PageViewCounter {
       counterElement.style.color = '#6c757d';
       counterElement.style.fontSize = '0.9rem';
       counterElement.innerHTML = `
-        <p>总访问量: ${this.data.totalViews} | 独立访客: ${this.data.uniqueViews}</p>
-        <p>本页访问量: ${this.data.pages[this.pageId].views}</p>
+      
       `;
       footer.insertBefore(counterElement, document.querySelector('.copyright'));
     }
