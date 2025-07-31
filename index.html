@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ByteFlowing's homepage</title>
+    <title>ByteFlowing's Homepage</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -144,27 +144,37 @@
             position: relative;
             overflow: hidden;
         }
-        
-        .nav-links a::before {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
+            left: 50%;
+            bottom: 6px;
+            transform: translateX(-50%) scaleX(0);
+            width: 70%;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            transition: transform 0.35s cubic-bezier(.4,2,.6,1), background 0.3s;
+            z-index: 1;
         }
-        
-        .nav-links a:hover::before {
-            left: 100%;
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: translateX(-50%) scaleX(1);
         }
-        
+        /* 关于我和联系我导航项特殊色 */
+        .nav-links a[href="#about"]:hover::after,
+        .nav-links a[href="#about"].active::after {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        .nav-links a[href="#contact"]:hover::after,
+        .nav-links a[href="#contact"].active::after {
+            background: linear-gradient(90deg, var(--success), var(--accent));
+        }
         .nav-links a:hover, .nav-links a.active {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.18);
             color: #fff;
             box-shadow: 0 8px 25px rgba(240, 147, 251, 0.3);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.04);
         }
         
         .menu-toggle {
@@ -248,17 +258,18 @@
             margin-bottom: 30px;
             font-weight: 800;
             letter-spacing: 3px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(45deg, #fff, #f093fb);
+            /* 去除发光阴影 */
+            background: linear-gradient(270deg, #43e97b, #38f9d7, #667eea, #764ba2, #f6416c, #43e97b);
+            background-size: 600% 600%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleGlow 3s ease-in-out infinite alternate;
+            animation: heroGradientMove 8s linear infinite;
         }
-        
-        @keyframes titleGlow {
-            from { filter: drop-shadow(0 0 10px rgba(240, 147, 251, 0.5)); }
-            to { filter: drop-shadow(0 0 30px rgba(240, 147, 251, 0.8)); }
+        @keyframes heroGradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         .hero p {
@@ -319,24 +330,21 @@
         }
         
         .section-title h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--primary);
-            display: inline-block;
-            background: white;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: white;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 24px rgba(102,126,234,0.18), 0 1px 0 rgba(67,233,123,0.10);
+            letter-spacing: 2px;
         }
         
         .section-title::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: #ddd;
-            z-index: 1;
+            /* 删除分割线 */
+            display: none;
         }
         
         .blog-grid {
@@ -873,7 +881,7 @@
                     <li><a href="#blog">博客</a></li>
                     <li><a href="https://github.com/ByteFlowing1337">项目</a></li>
                     <li><a href="#about">关于我</a></li>
-                    <li><a href="#contact">联系</a></li>
+                    <li><a href="#contact">联系我</a></li>
                 </ul>
             </nav>
         </div>
@@ -883,9 +891,9 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>ByteFlowing's homepage</h1>
+                <h1>ByteFlowing's Homepage</h1>
                 <p>网站开发中... </p>
-                <p><del style="color: rgba(255,255,255,0.6);">Supported by AI Agent</del></p>
+                <p><del style="color: rgba(255,255,255,0.6)">Supported by AI Agent</del></p>
                 <a href="https://space.bilibili.com/1998380222" class="btn" target="_blank">查看我的Bilibili主页</a>
             </div>
         </div>
@@ -895,7 +903,7 @@
     <section class="about-section" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>关于我</h2>
+                <h2>About</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -904,7 +912,7 @@
                     <h2>编程入门级^^</h2>
                     
                      <div class="skills">
-                        <h3>当前技能树</h3>
+                        <h3>Skills</h3>
                         <div class="skill-bar">
                             <div class="skill-info">
                                 <span>HTML/CSS</span>
@@ -960,7 +968,7 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>联系我</h2>
+                <h2>Contact</h2>
             </div>
             <div class="contact-container">
                 <div class="contact-info">
@@ -969,7 +977,7 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>邮箱</h3>
+                            <h3>Email</h3>
                             <p>fakeshadow1337@gmail.com</p>
                         </div>
                     </div>
@@ -979,7 +987,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>位置</h3>
+                            <h3>Location</h3>
                             <p>People's Republic of China</p>
                         </div>
                     </div>
@@ -997,7 +1005,7 @@
                             <i class="fas fa-share-alt"></i>
                         </div>
                         <div class="contact-details">
-                            <h3>社交媒体</h3>
+                            <h3>Social Media</h3>
                             <div class="social-links" style="margin-top: 15px;">
                                 <a href="https://github.com/ByteFlowing1337" target="_blank"><i class="fab fa-github"></i></a>
                                 <a href="https://space.bilibili.com/1998380222" target="_blank"><i class="fab fa-bilibili"></i></a>
