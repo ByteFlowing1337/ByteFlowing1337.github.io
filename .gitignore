@@ -1,0 +1,8 @@
+# Admin Tool (Local Only)
+admin.html
+scripts/admin.js
+
+# System Files
+.DS_Store
+Thumbs.db
+.vscode/
