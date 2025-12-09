@@ -1,106 +1,146 @@
-<html lang="en-US"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Articles Sharing</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="site-header">
-        <div class="logo">ByteFlow</div>
-        <nav class="site-nav" aria-label="Main navigation">
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu">Menu</button>
-            <ul id="primary-menu" class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#latest">Latest</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <button class="theme-toggle" type="button" aria-label="Toggle theme">
-            <span class="theme-icon" aria-hidden="true"></span>
+      <div class="logo">ByteFlow</div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-menu"
+        >
+          Menu
         </button>
+        <ul id="primary-menu" class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#latest">Latest</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
     </header>
 
     <main>
-        <section id="home" class="hero" aria-label="Welcome section">
-            <div class="hero-text">
-                <p class="hero-intro">Hi, welcome to</p>
-                <h1 class="hero-title">ByteFlow's Writing Studio</h1>
-                <p class="hero-tagline" data-typing="">
-                    <span class="typewriter" aria-live="polite"></span>
-                </p>
-                <div class="hero-actions">
-                    <a class="btn btn-primary" href="#latest">Read Latest Posts</a>
-                    <a class="btn btn-secondary" href="#contact">Contact The Author</a>
-                </div>
+      <section id="home" class="hero" aria-label="Welcome section">
+        <div class="hero-text">
+          <p class="hero-intro">Hi, welcome to</p>
+          <h1 class="hero-title">ByteFlow's Writing Studio</h1>
+          <p class="hero-tagline" data-typing="">
+            <span class="typewriter" aria-live="polite"></span>
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#latest">Read Latest Posts</a>
+            <a class="btn btn-secondary" href="#contact">Contact The Author</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="floating-card">
+            <span class="pulse"></span>
+            <div class="card-content">
+              <p class="card-title">Creative Notes</p>
+              <p class="card-body">
+                Capturing product thinking, front-end experiments, and design
+                stories in a way makers can reuse.
+              </p>
             </div>
-            <div class="hero-visual" aria-hidden="true">
-                <div class="floating-card">
-                    <span class="pulse"></span>
-                    <div class="card-content">
-                        <p class="card-title">Creative Notes</p>
-                        <p class="card-body">Capturing product thinking, front-end experiments, and design stories in a way makers can reuse.</p>
-                    </div>
-                </div>
-                <div class="orbit">
-                    <span class="orbit-dot"></span>
-                </div>
+          </div>
+          <div class="orbit">
+            <span class="orbit-dot"></span>
+          </div>
+        </div>
+      </section>
+
+      <section id="latest" class="section" aria-label="Latest articles">
+        <div class="section-header">
+          <h2>Latest Articles</h2>
+          <p>Recording my thoughtful and insightful ideas.</p>
+        </div>
+        <div class="section-body post-grid">
+          <article class="post-card">
+            <header>
+              <p class="post-meta">
+                <span class="post-date">Dec 9, 2025</span>
+              </p>
+              <h3>
+                <a href="articles\2025-12-09-save-router.html"
+                  >抢救软路由的趣事一谈</a
+                >
+              </h3>
+            </header>
+            <p>
+              在web管理页面误删lan配置导致管理页面无法进入，键盘盲打两行命令修复
+            </p>
+            <ul class="post-tags">
+              <li><span>router</span></li>
+              <li><span>internet</span></li>
+            </ul>
+            <a class="post-link" href="articles\2025-12-09-save-router.html"
+              >Read Article</a
+            >
+          </article>
+
+          <article class="post-card">
+            <header>
+              <p class="post-meta">
+                <span class="post-date">Oct 29, 2025</span> Â· 3 min read
+              </p>
+              <h3>
+                <a href="Tft.html"
+                  >Querying the TFT matches in League of Legends</a
+                >
+              </h3>
+            </header>
+            <p>
+              An introduction to querying the TFT matches using the LCU API with
+              python.
+            </p>
+            <ul class="post-tags">
+              <li><span>LCU API</span></li>
+            </ul>
+            <a class="post-link" href="Tft.html">Read Article</a>
+          </article>
+        </div>
+
+        <section
+          id="contact"
+          class="section"
+          aria-label="Contact and subscribe"
+        >
+          <div class="section-header">
+            <h2>Stay Connected</h2>
+            <p>Say hello or drop a note about an upcoming collaboration.</p>
+          </div>
+          <div class="section-body contact-grid">
+            <div class="contact-card">
+              <h3>Email</h3>
+              <a class="highlight" href="mailto:fakeshadow1337@gmail.com"
+                >fakeshadow1337@gmail.com</a
+              >
+              <p class="contact-note">Open for collaborations.</p>
             </div>
+          </div>
         </section>
-
-        <section id="latest" class="section" aria-label="Latest articles">
-            <div class="section-header">
-                <h2>Latest Articles</h2>
-                <p>Recording my thoughtful and insightful ideas.</p>
-            </div>
-            <div class="section-body post-grid">
-    <article class="post-card">
-        <header>
-            <p class="post-meta"><span class="post-date">Dec 9, 2025</span></p>
-            <h3><a href="-.html">抢救软路由的趣事一谈</a></h3>
-        </header>
-        <p>在web管理页面误删lan配置导致管理页面无法进入，键盘盲打两行命令修复</p>
-        <ul class="post-tags"><li><span>router</span></li><li><span>internet</span></li></ul>
-        <a class="post-link" href="-.html">Read Article</a>
-    </article>
-                
-                <article class="post-card">
-                    <header>
-                        <p class="post-meta"><span class="post-date">Oct 29, 2025</span> Â· 3 min read</p>
-                        <h3><a href="Tft.html">Querying the TFT matches in League of Legends</a></h3>
-                    </header>
-                    <p>An introduction to querying the TFT matches using the LCU API with python.</p>
-                    <ul class="post-tags">
-                        <li><span>LCU API</span></li>
-                        
-                    </ul>
-                    <a class="post-link" href="Tft.html">Read Article</a>
-                </article>
-            </div>
-
-
-        <section id="contact" class="section" aria-label="Contact and subscribe">
-            <div class="section-header">
-                <h2>Stay Connected</h2>
-                <p>Say hello or drop a note about an upcoming collaboration.</p>
-            </div>
-            <div class="section-body contact-grid">
-                <div class="contact-card">
-                    <h3>Email</h3>
-                    <a class="highlight" href="mailto:fakeshadow1337@gmail.com">fakeshadow1337@gmail.com</a>
-                    <p class="contact-note">Open for collaborations.</p>
-                </div>
-            </div>
-        </section>
-    </section></main>
+      </section>
+    </main>
 
     <footer class="site-footer">
-        <p>Â© <span data-year=""></span> ByteFlow. Writing in the open.</p>
+      <p>Â© <span data-year=""></span> ByteFlow. Writing in the open.</p>
     </footer>
 
     <script src="scripts/main.js" defer=""></script>
-
-
-</body></html>
+  </body>
+</html>
