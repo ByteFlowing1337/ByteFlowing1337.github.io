@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Articles - ByteFlow</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">ByteFlow</div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-menu"
+        >
+          Menu
+        </button>
+        <ul id="primary-menu" class="nav-links">
+          <li><a href="/index.html#home">Home</a></li>
+          <li>
+            <a href="/articles/index.html" aria-current="page">Articles</a>
+          </li>
+          <li><a href="/index.html#latest">Latest</a></li>
+          <li><a href="/index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+    </header>
+
+    <main>
+      <section
+        class="section"
+        style="padding-top: 8rem; max-width: 1100px; margin: 0 auto"
+      >
+        <div class="section-header" style="text-align: left; gap: 0.5rem">
+          <p class="post-meta">
+            <span class="post-date">Updated Dec 10, 2025</span>
+          </p>
+          <h1 style="margin: 0">All Articles</h1>
+          <p style="margin: 0; color: var(--text-muted)">
+            Full archive with filenames, publish dates, titles, and
+            descriptions.
+          </p>
+        </div>
+
+        <div class="section-body" style="overflow-x: auto">
+          <table
+            class="table"
+            style="width: 100%; border-collapse: collapse; min-width: 720px"
+          >
+            <thead>
+              <tr>
+                <th style="text-align: left; padding: 0.75rem 0.5rem">Title</th>
+                <th style="text-align: left; padding: 0.75rem 0.5rem">
+                  Publish Date
+                </th>
+                <th style="text-align: left; padding: 0.75rem 0.5rem">
+                  Description
+                </th>
+                <th style="text-align: left; padding: 0.75rem 0.5rem">File</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.75rem 0.5rem">
+                  <a href="/articles/2025-12-09-save-router.html"
+                    >抢救软路由的趣事一谈</a
+                  >
+                </td>
+                <td style="padding: 0.75rem 0.5rem; white-space: nowrap">
+                  Dec 9, 2025
+                </td>
+                <td style="padding: 0.75rem 0.5rem">
+                  在 web 管理页面误删 lan
+                  配置导致无法进入管理页，键盘盲打两条命令恢复。
+                </td>
+                <td style="padding: 0.75rem 0.5rem; white-space: nowrap">
+                  <code>articles/2025-12-09-save-router.html</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span data-year>2025</span> ByteFlow. Writing in the open.</p>
+    </footer>
+    <script src="/scripts/main.js" defer></script>
+  </body>
+</html>
